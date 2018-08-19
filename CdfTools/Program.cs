@@ -8,6 +8,8 @@ namespace CdfValidator
     [Subcommand("validate", typeof(ValidateCommand))]
     class Program
     {
+        [Option(Template = "-v|--verbose")]
+        public bool Verbose { get; }
         public static int Main(string[] args) => CommandLineApplication.Execute<Program>(args);
         public int OnExecute(CommandLineApplication app)
         {
