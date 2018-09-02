@@ -1,5 +1,5 @@
 ﻿using McMaster.Extensions.CommandLineUtils;
-namespace CdfValidator
+namespace CdfTools
 {
     [HelpOption("--hlp")]
     [Command(ExtendedHelpText = "Tools for working with Common Data Formats",
