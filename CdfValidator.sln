@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26124.0
 MinimumVisualStudioVersion = 15.0.26124.0
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CdfValidator", "CdfTools\CdfValidator.csproj", "{50D1F743-698E-41A0-887D-A8E2727C529F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CdfValidator", "CdfTools\CdfTools.csproj", "{50D1F743-698E-41A0-887D-A8E2727C529F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CdfTools.Tests", "CdfTools.Tests\CdfTools.Tests.csproj", "{BB62A6B2-8651-4961-9E40-344EDDBB3497}"
 EndProject

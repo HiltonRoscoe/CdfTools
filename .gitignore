@@ -1,3 +1,7 @@
+*.xsd
+*.xml
+*.xsl
+*.sch
 *.swp
 *.*~
 project.lock.json
