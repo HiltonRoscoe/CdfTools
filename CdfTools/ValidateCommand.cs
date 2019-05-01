@@ -1,10 +1,11 @@
 using System;
 using System.ComponentModel.DataAnnotations;
+using System.IO;
 using McMaster.Extensions.CommandLineUtils;
 namespace CdfTools
 {
-    //[HelpOption("--hlp")]
-    [Command(ExtendedHelpText = "Validates Common Data Format instances.")]
+    // [HelpOption("--hlp")]
+    [Command(ExtendedHelpText = "Validates Common Data Format instances.")]    
     class ValidateCommand
     {
         [LegalFilePath]
@@ -19,7 +20,7 @@ namespace CdfTools
 
         [LegalFilePath]
         [Option(Template = "-t|--schematron", Description = "Input schematron file")]
-        [Required]
+        //    [Required]
         public string SchematronFile { get; }
         // You can use this pattern when the parent command may have options or methods you want to
         // use from sub-commands.
@@ -30,49 +31,38 @@ namespace CdfTools
         {
             try
             {
-                if (!string.IsNullOrEmpty(this.SchematronFile))
+                // check which validator to invoke
+                if (this.InputFile.EndsWith(".xml"))
                 {
-                    // run schematron logic
-                }
-                // TODO: sanitize uris/filenames
-                System.Console.WriteLine("Invoking XSD Validation");
-                var validator = new XsdValidator();
-                var errorList = validator.Validate(this.SchemaFile, this.InputFile);
-                if (errorList.Count > 0)
-                {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    foreach (var error in errorList)
+                    if (!string.IsNullOrEmpty(this.SchematronFile))
                     {
-                        Console.WriteLine(error);
+                        throw new NotImplementedException("Schematron support is not available at this time");
+                        // XmlValidationHarness.schematron(this.InputFile, this.SchematronFile);
                     }
-                    Console.WriteLine("XML Instance has one or more errors");
+                    XmlValidationHarness.xsd(this.InputFile, this.SchemaFile);
+                }
+                else if (this.InputFile.EndsWith(".json"))
+                {
+                    // note that schematron flag is ignored in this case
+                    JsonSchemaValidator.jsonSchema(this.InputFile, this.SchemaFile);
                 }
                 else
                 {
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("XML Instance is Valid");
+                    Console.ForegroundColor = ConsoleColor.DarkRed;
+                    Console.WriteLine(String.Format("Unknown file type!"));
                 }
-                Console.ResetColor();
             }
-            catch (System.IO.FileNotFoundException ex)
+            catch (FileNotFoundException ex)
             {
                 Console.ForegroundColor = ConsoleColor.DarkRed;
                 Console.WriteLine(String.Format("Cannot find file {0}", ex.FileName));
-            }
-            catch (System.Xml.Schema.XmlSchemaException ex)
-            {
-                Console.ForegroundColor = ConsoleColor.DarkRed;
-                Console.WriteLine("Problem processing the XML Schema Definition");
-                if (Parent.Verbose)
-                {
-                    Console.WriteLine(ex.Message);
-                }
             }
             finally
             {
                 Console.ResetColor();
             }
         }
+
         public bool HasErrors { get; set; }
 
         private class HelpOptionAttribute : Attribute
