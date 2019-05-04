@@ -1,4 +1,4 @@
-using System;
+using System.Collections.Generic;
 using System.Xml;
 namespace CdfTools
 {
@@ -17,7 +17,7 @@ namespace CdfTools
             var nsmgr = new XmlNamespaceManager(svrl.NameTable);
             nsmgr.AddNamespace("svrl", "http://purl.oclc.org/dsdl/svrl");
             var errors = svrl.SelectNodes("/svrl:schematron-output/svrl:failed-assert", nsmgr);
-            if (errors.Count > 0)
+           /* if (errors.Count > 0)
             {
                 Console.ForegroundColor = ConsoleColor.Red;
                 foreach (XmlNode error in errors)
@@ -30,44 +30,24 @@ namespace CdfTools
                 Console.ForegroundColor = ConsoleColor.Green;
                 Console.WriteLine("Schematron validation passed");
             }
-            Console.ResetColor();
+            Console.ResetColor();*/
             //TODO: remove short circuit
             return;
         }
 
 
-        public static void xsd(string inputFile, string schemaFile)
+        public static List<string> xsd(string inputFile, string schemaFile)
         {
             try
             {
                 // TODO: sanitize uris/filenames
-                System.Console.WriteLine("Invoking XSD Validation");
                 var validator = new XsdValidator();
-                var errorList = validator.Validate(schemaFile, inputFile);
-                if (errorList.Count > 0)
-                {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    foreach (var error in errorList)
-                    {
-                        Console.WriteLine(error);
-                    }
-                    Console.WriteLine("XML Instance has one or more errors");
-                }
-                else
-                {
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine("XML Instance is Valid");
-                }
-                Console.ResetColor();
+                return validator.Validate(schemaFile, inputFile);
+             
             }
-            catch (System.Xml.Schema.XmlSchemaException)
+            catch (System.Xml.Schema.XmlSchemaException ex)
             {
-                Console.ForegroundColor = ConsoleColor.DarkRed;
-                Console.WriteLine("Problem processing the XML Schema Definition");
-                // if (Parent.Verbose)
-                // {
-                //    Console.WriteLine(ex.Message);
-                // }
+                throw new System.Exception("Problem processing the XML Schema Definition", ex);                        
             }
         }
     }

@@ -8,9 +8,8 @@ namespace CdfTools
 {
     class JsonSchemaValidator
     {
-        public static void jsonSchema(string inputPath, string schemaPath)
-        {
-            System.Console.WriteLine("Invoking JSON Schema Validation");
+        public static List<String> jsonSchema(string inputPath, string schemaPath)
+        {            
             using (StreamReader schemaFile = File.OpenText(schemaPath))
             {
                 using (StreamReader inputFile = File.OpenText(inputPath))
@@ -24,12 +23,10 @@ namespace CdfTools
                             {
                                 validatingReader.Schema = schema;
 
-                                IList<string> errorList = new List<string>();
+                                List<string> errorList = new List<string>();
                                 validatingReader.ValidationEventHandler += (o, a) =>
                                 {
-                                    errorList.Add(a.Message);
-                                    // send out immediately
-                                    // Console.WriteLine(a.Message);
+                                    errorList.Add(a.Message);             
                                 };
 
                                 JsonSerializer serializer = new JsonSerializer();
@@ -39,21 +36,7 @@ namespace CdfTools
                                 {
                                 }
 
-                                if (errorList.Count > 0)
-                                {
-                                    Console.ForegroundColor = ConsoleColor.Red;
-                                    foreach (var error in errorList)
-                                    {
-                                        Console.WriteLine(error);
-                                    }
-                                    Console.WriteLine("JSON Instance has one or more errors");
-                                }
-                                else
-                                {
-                                    Console.ForegroundColor = ConsoleColor.Green;
-                                    Console.WriteLine("JSON Instance is Valid");
-                                }
-                                Console.ResetColor();
+                                return errorList;
                             }
                         }
                     }
