@@ -6,6 +6,17 @@
     <StartupObject>CdfTools.Program</StartupObject>
     <TargetFramework>netcoreapp2.1</TargetFramework>
     <TargetLatestRuntimePatch>true</TargetLatestRuntimePatch>
+    <SignAssembly>false</SignAssembly>
+    <AssemblyVersion>1.0.*</AssemblyVersion>
+    <Copyright>(c) 2019 Hilton Roscoe LLC</Copyright>
+    <Deterministic>false</Deterministic>
+    <Company>Hilton Roscoe LLC</Company>
+    <Authors>John Dziurlaj</Authors>
+    <RepositoryUrl>https://github.com/HiltonRoscoe/CdfTools</RepositoryUrl>
+    <PackageLicenseUrl></PackageLicenseUrl>
+    <PackageType>DotNetCliTool</PackageType>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageLicenseExpression>AGPL-3.0-or-later</PackageLicenseExpression>
   </PropertyGroup>
 
   <ItemGroup>
