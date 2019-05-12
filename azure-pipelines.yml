@@ -28,6 +28,14 @@ steps:
     command: 'build'
     feedsToUse: 'select'
     versioningScheme: 'off'
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'publish'
+    publishWebProjects: false
+    arguments: '-c release -r osx-x64'
+    feedsToUse: 'select'
+    versioningScheme: 'off'
+    workingDirectory: 'osx'
 - task: VSTest@2
   inputs:
     platform: '$(buildPlatform)'
@@ -42,4 +50,4 @@ steps:
     tag: 'v$(MajorVersion).$(MinorVersion).$(PatchVersion)'
     title: 'CdfTools'
     addChangeLog: true
-    isDraft: true
+    isDraft: true    
