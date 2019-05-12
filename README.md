@@ -40,3 +40,5 @@ CdfTools validate --schema '{input schema}' --input '{input schema instance}'
 > CdfTools automatically determines whether to invoke XSD or JSON Schema validation based on the file extension of the input. An XML file ending in `.xml` or a JSON file ending in `.json` is required.
 
 > Schema files are not included with `CdfTools`. Please visit the [NIST Voting Repository](https://github.com/usnistgov/voting) and download the required `joson` or `xml` file.
+
+## Where to get
