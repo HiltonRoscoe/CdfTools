@@ -45,5 +45,4 @@ steps:
     tag: 'v$(MajorVersion).$(MinorVersion).$(PatchVersion)'
     title: 'CdfTools'
     addChangeLog: true
-    releaseNotesFile: 'RELEASE.md'
     isDraft: true
