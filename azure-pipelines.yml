@@ -36,6 +36,7 @@ steps:
     feedsToUse: 'select'
     versioningScheme: 'off'
     workingDirectory: 'osx'
+    projects: 'CdfTools/*.csproj'
 - task: VSTest@2
   inputs:
     platform: '$(buildPlatform)'
