@@ -37,6 +37,7 @@ steps:
     configuration: '$(buildConfiguration)'
 - task: GitHubRelease@0
   inputs:
+    gitHubConnection: HiltonRoscoe
     repositoryName: '$(Build.Repository.Name)'
     action: 'create'
     target: '$(Build.SourceVersion)'
