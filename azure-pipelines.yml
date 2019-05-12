@@ -32,7 +32,7 @@ steps:
   inputs:
     command: 'publish'
     publishWebProjects: false
-    arguments: '-c release -r osx-x64'
+    arguments: '-c release -r osx-x64 -o $(Build.ArtifactStagingDirectory)'
     feedsToUse: 'select'
     versioningScheme: 'off'
     workingDirectory: 'osx'
