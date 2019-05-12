@@ -20,17 +20,14 @@ steps:
   inputs:
     version: '2.1.400' 
 - task: NuGetToolInstaller@0
-
 - task: NuGetCommand@2
   inputs:
     restoreSolution: '$(solution)'
-
-- task: VSBuild@1
+- task: DotNetCoreCLI@2
   inputs:
-    solution: '$(solution)'
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
-
+    command: 'build'
+    feedsToUse: 'select'
+    versioningScheme: 'off'
 - task: VSTest@2
   inputs:
     platform: '$(buildPlatform)'
