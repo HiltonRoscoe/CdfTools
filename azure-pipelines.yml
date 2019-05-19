@@ -1,8 +1,3 @@
-# .NET Desktop
-# Build and run tests for .NET Desktop or Windows classic desktop solutions.
-# Add steps that publish symbols, save build artifacts, and more:
-# https://docs.microsoft.com/azure/devops/pipelines/apps/windows/dot-net
-
 trigger:
 - master
 
@@ -20,17 +15,22 @@ steps:
   inputs:
     version: '2.1.400' 
 - task: NuGetToolInstaller@0
-
 - task: NuGetCommand@2
   inputs:
     restoreSolution: '$(solution)'
-
-- task: VSBuild@1
+- task: DotNetCoreCLI@2
   inputs:
-    solution: '$(solution)'
-    platform: '$(buildPlatform)'
-    configuration: '$(buildConfiguration)'
-
+    command: 'build'
+    feedsToUse: 'select'
+    versioningScheme: 'off'
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'publish'
+    publishWebProjects: false
+    arguments: '-c release -r osx-x64 -o $(Build.ArtifactStagingDirectory)'
+    feedsToUse: 'select'
+    versioningScheme: 'off'    
+    projects: 'CdfTools/*.csproj'
 - task: VSTest@2
   inputs:
     platform: '$(buildPlatform)'
@@ -41,9 +41,8 @@ steps:
     repositoryName: '$(Build.Repository.Name)'
     action: 'create'
     target: '$(Build.SourceVersion)'
-    tagSource: 'auto'
+    tagSource: 'manual'
     tag: 'v$(MajorVersion).$(MinorVersion).$(PatchVersion)'
     title: 'CdfTools'
     addChangeLog: true
-    releaseNotesFile: 'RELEASE.md'
-    isDraft: true
+    isDraft: true    
