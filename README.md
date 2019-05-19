@@ -39,4 +39,11 @@ CdfTools validate --schema '{input schema}' --input '{input schema instance}'
 
 > CdfTools automatically determines whether to invoke XSD or JSON Schema validation based on the file extension of the input. An XML file ending in `.xml` or a JSON file ending in `.json` is required.
 
-> Schema files are not included with `CdfTools`. Please visit the [NIST Voting Repository](https://github.com/usnistgov/voting) and download the required `joson` or `xml` file.
+> Schema files are not included with `CdfTools`. Please visit the [NIST Voting Repository](https://github.com/usnistgov/voting) and download the required `json` or `xml` file.
+
+## Obtaining CdfTools
+
+CdfTools is available in binary form from the releases page of this GitHub repository. It is available in two forms:
+
+- Framework-dependent (fdd), universal binary that requires [.NET Core 2.1 or greater](https://dotnet.microsoft.com/download) to be installed on the target host.
+- Self-contained (scd), has no external dependencies, but is platform specific. Self-contained deployments are only available for x64 Windows targets.
