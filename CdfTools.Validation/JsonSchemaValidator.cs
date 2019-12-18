@@ -4,11 +4,11 @@ using System.IO;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Schema;
 
-namespace CdfTools
+namespace CdfTools.Validation
 {
-    class JsonSchemaValidator
+   public class JsonSchemaValidator
     {
-        public static List<String> jsonSchema(string inputPath, string schemaPath)
+        public static List<String> Validate(string inputPath, string schemaPath)
         {            
             using (StreamReader schemaFile = File.OpenText(schemaPath))
             {

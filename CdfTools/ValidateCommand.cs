@@ -1,6 +1,7 @@
 using System;
 using System.ComponentModel.DataAnnotations;
 using System.IO;
+using CdfTools.Validation;
 using McMaster.Extensions.CommandLineUtils;
 namespace CdfTools
 {
@@ -60,7 +61,7 @@ namespace CdfTools
                 {
                     // note that schematron flag is ignored in this case
                     System.Console.WriteLine("Invoking JSON Schema Validation");
-                    var errorList = JsonSchemaValidator.jsonSchema(this.InputFile, this.SchemaFile);
+                    var errorList = JsonSchemaValidator.Validate(this.InputFile, this.SchemaFile);
                     if (errorList.Count > 0)
                     {
                         Console.ForegroundColor = ConsoleColor.Red;

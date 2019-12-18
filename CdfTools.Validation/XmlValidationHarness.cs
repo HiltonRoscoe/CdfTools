@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using System.Xml;
-namespace CdfTools
+namespace CdfTools.Validation
 {
     public class XmlValidationHarness
     {

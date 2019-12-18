@@ -3,7 +3,7 @@ using System.Xml.Linq;
 using System.Xml.Schema;
 using System;
 using System.Collections.Generic;
-namespace CdfTools
+namespace CdfTools.Validation
 {
     internal class XsdValidator
     {

@@ -1,7 +1,7 @@
 using System.IO;
 using System.Xml;
 using System.Xml.Xsl;
-namespace CdfTools
+namespace CdfTools.Validation
 {
     public class SchematronValidator
     {
