@@ -2,9 +2,9 @@
 
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <RuntimeFrameworkVersion>2.1.0</RuntimeFrameworkVersion>
+    <RuntimeFrameworkVersion>3.1.0</RuntimeFrameworkVersion>
     <StartupObject>CdfTools.Program</StartupObject>
-    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
     <TargetLatestRuntimePatch>true</TargetLatestRuntimePatch>
     <SignAssembly>false</SignAssembly>
     <AssemblyVersion>1.0.*</AssemblyVersion>
@@ -14,7 +14,6 @@
     <Authors>John Dziurlaj</Authors>
     <RepositoryUrl>https://github.com/HiltonRoscoe/CdfTools</RepositoryUrl>
     <PackageLicenseUrl></PackageLicenseUrl>
-    <PackageType>DotNetCliTool</PackageType>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageLicenseExpression>AGPL-3.0-or-later</PackageLicenseExpression>
   </PropertyGroup>
