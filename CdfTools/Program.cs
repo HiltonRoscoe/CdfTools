@@ -29,7 +29,7 @@ namespace CdfTools
     [Command(ExtendedHelpText = "Tools for working with Common Data Formats",
     Name = "cdftools",
     FullName = "Common Data Format Tools")]
-    [Subcommand("validate", typeof(ValidateCommand))]
+    [Subcommand(typeof(ValidateCommand))]
     class Program
     {
         [Option(Template = "-v|--verbose")]
