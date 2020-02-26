@@ -34,7 +34,7 @@ namespace CdfTools.Validation
                     {
                         if (type == XmlSeverityType.Error)
                         {
-                            errorList.Add(validationEvent.Message);
+                            errorList.Add(String.Format("{0} Line: {1}. Column: {2}.",validationEvent.Message, validationEvent.Exception.LineNumber, validationEvent.Exception.LinePosition));
                         }
                     }
                 });
