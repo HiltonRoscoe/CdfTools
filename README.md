@@ -45,5 +45,5 @@ CdfTools validate --schema '{input schema}' --input '{input schema instance}'
 
 CdfTools is available in binary form from the releases page of this GitHub repository. It is available in two forms:
 
-- Framework-dependent (fdd), universal binary that requires [.NET Core 2.1 or greater](https://dotnet.microsoft.com/download) to be installed on the target host.
-- Self-contained (scd), has no external dependencies, but is platform specific. Self-contained deployments are only available for x64 Windows targets.
+- Framework-dependent (fdd), universal binary that requires [.NET Core 2.X](https://dotnet.microsoft.com/download) to be installed on the target host.
+- Self-contained (scd), has no external dependencies, but is platform specific. Self-contained deployments are only available for x64 macOS or Windows targets.
